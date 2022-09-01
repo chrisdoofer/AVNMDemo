@@ -27,7 +27,7 @@ param virtualNetworkName string = 'anm-vnet-'
 param existingVirtualNetworkResourceGroup string = resourceGroup().name
 
 @description('remote desktop source address')
-param sourceIPaddressRDP string = '217.122.185.32'
+param sourceIPaddressRDP string = '94.126.212.170'
 
 @description('Name of the subnet to create in the virtual network')
 param subnetName string = 'vmSubnet'
@@ -39,7 +39,7 @@ param nicName string = 'VMNic-'
 param vmName string = 'VM-'
 
 resource virtualNetworkName_resource 'Microsoft.Network/virtualNetworks@2019-09-01' = [for i in range(0, copies): {
-  name: '${virtualNetworkName}-${i}'
+  name: '${virtualNetworkName}${i}'
   location: location
   properties: {
     addressSpace: {
@@ -91,7 +91,7 @@ resource anm_nsg 'Microsoft.Network/networkSecurityGroups@2020-11-01' = {
 }
 
 resource nicName_resource 'Microsoft.Network/networkInterfaces@2019-09-01' = [for i in range(0, copies): {
-  name: '${nicName}-${i}'
+  name: '${nicName}${i}'
   location: location
   properties: {
     ipConfigurations: [
@@ -99,7 +99,7 @@ resource nicName_resource 'Microsoft.Network/networkInterfaces@2019-09-01' = [fo
         name: 'ipconfig1'
         properties: {
           subnet: {
-            id: resourceId(existingVirtualNetworkResourceGroup, 'Microsoft.Network/virtualNetworks/subnets', '${virtualNetworkName}-${i}', subnetName)
+            id: resourceId(existingVirtualNetworkResourceGroup, 'Microsoft.Network/virtualNetworks/subnets', '${virtualNetworkName}${i}', subnetName)
           }
           privateIPAllocationMethod: 'Dynamic'
         }
@@ -112,14 +112,14 @@ resource nicName_resource 'Microsoft.Network/networkInterfaces@2019-09-01' = [fo
 }]
 
 resource vmName_resource 'Microsoft.Compute/virtualMachines@2018-10-01' = [for i in range(0, copies): {
-  name: '${vmName}-${i}'
+  name: '${vmName}${i}'
   location: location
   properties: {
     hardwareProfile: {
       vmSize: vmsize
     }
     osProfile: {
-      computerName: '${vmName}-${i}'
+      computerName: '${vmName}${i}'
       adminUsername: adminUsername
       adminPassword: adminPassword
     }
@@ -138,7 +138,7 @@ resource vmName_resource 'Microsoft.Compute/virtualMachines@2018-10-01' = [for i
     networkProfile: {
       networkInterfaces: [
         {
-          id: resourceId('Microsoft.Network/networkInterfaces', '${nicName}-${i}')
+          id: resourceId('Microsoft.Network/networkInterfaces', '${nicName}${i}')
         }
       ]
     }
@@ -162,6 +162,9 @@ resource vmName_Microsoft_Azure_NetworkWatcher 'Microsoft.Compute/virtualMachine
     typeHandlerVersion: '1.4'
     autoUpgradeMinorVersion: true
   }
+  dependsOn: [
+    vmName_resource
+  ]
 }]
 
 resource vmName_IISExtension 'Microsoft.Compute/virtualMachines/extensions@2021-04-01' = [for i in range(0, copies): {
@@ -173,9 +176,12 @@ resource vmName_IISExtension 'Microsoft.Compute/virtualMachines/extensions@2021-
     type: 'CustomScriptExtension'
     typeHandlerVersion: '1.9'
     settings: {
-      commandToExecute: 'powershell -ExecutionPolicy Unrestricted Add-Content -Path "C:\\inetpub\\wwwroot\\Default.htm" -Value $($env:computername)'
+      commandToExecute: 'powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path "C:\\inetpub\\wwwroot\\Default.htm" -Value $($env:computername)"}'
     }
     protectedSettings: {
     }
   }
+  dependsOn: [
+    vmName_resource
+  ]
 }]
