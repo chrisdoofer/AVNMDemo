@@ -176,7 +176,7 @@ resource vmName_IISExtension 'Microsoft.Compute/virtualMachines/extensions@2021-
     type: 'CustomScriptExtension'
     typeHandlerVersion: '1.9'
     settings: {
-      commandToExecute: 'powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path "C:\\inetpub\\wwwroot\\Default.htm" -Value $($env:computername)"}'
+      commandToExecute: 'powershell Add-WindowsFeature Web-Server; powershell Add-Content -Path "C:\\inetpub\\wwwroot\\Default.htm" -Value $($env:computername)"'
     }
     protectedSettings: {
     }
