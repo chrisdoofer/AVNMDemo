@@ -1,6 +1,6 @@
 # Azure Virtual Network Manager Demo
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fmddazure%2F101-multiple-vnets-with-vms%2Fmain%2Fazuredeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fchrisdoofer%2FAVNMDemo%2Fmain%2Fazuredeploy.bicep)
 
 This template deploys a specified number of VNETs (1 - 254), each with a small Windows VM with a custom script extension to deploy IIS. 
 
