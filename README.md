@@ -12,5 +12,5 @@ Usage:
 - Create a resource group in your region of choice.
 - Deploy the template to the resource group.
 - Deploy ANM to the resource group.
-- Configure and test ANM per instructions provided in this repo.
+- Configure and test AVNM per instructions provided in this repo.
 
