@@ -6,7 +6,7 @@ This template deploys a specified number of VNETs (1 - 254), each with a small W
 
 The address space in each VNET is unique: 10.0.<1-254>.0.
 
-The goal behgind this is to provide a base infrastructure to demonstrate the key capabilities of Azure Virtual Network Manager.
+The goal behind this is to provision base infrastructure to demonstrate the key capabilities of Azure Virtual Network Manager.
 
 Usage:
 - Create a resource group in your region of choice.
