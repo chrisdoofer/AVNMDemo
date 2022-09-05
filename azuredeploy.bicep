@@ -211,6 +211,7 @@ resource virtualNetworkManager 'Microsoft.Network/networkManagers@2022-04-01-pre
   properties: {
     networkManagerScopeAccesses:[
       'Connectivity'
+      'SecurityAdmin'
     ]
     networkManagerScopes:{
       subscriptions:[
