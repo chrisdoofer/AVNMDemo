@@ -27,7 +27,7 @@ param virtualNetworkName string = 'anm-vnet-'
 param existingVirtualNetworkResourceGroup string = resourceGroup().name
 
 @description('remote desktop source address')
-param sourceIPaddressRDP string = '94.126.212.170'
+param sourceIPaddressRDP string = '81.150.78.91'
 
 @description('Name of the subnet to create in the virtual network')
 param subnetName string = 'vmSubnet'
@@ -37,6 +37,19 @@ param nicName string = 'VMNic-'
 
 @description('Prefix name of the nic of the vm')
 param vmName string = 'VM-'
+
+@description('Prefix name of the nic of the vm')
+param bastionHostName string = 'AVNMBASTION-'
+
+@description('Bool parameter to deploy Bastion')
+param deployBastion bool = true
+
+@description('Bool parameter to deploy Network Manager with access to the current subscription scope only')
+param deployNetworkManager bool = true
+
+var currentSub = subscription().id
+var avnmName = 'AVNMDemo'
+
 
 resource virtualNetworkName_resource 'Microsoft.Network/virtualNetworks@2019-09-01' = [for i in range(0, copies): {
   name: '${virtualNetworkName}${i}'
@@ -51,7 +64,7 @@ resource virtualNetworkName_resource 'Microsoft.Network/virtualNetworks@2019-09-
       {
         name: subnetName
         properties: {
-          addressPrefix: '10.0.${i}.0/25'
+          addressPrefix: '10.0.${i}.0/26'
           delegations: []
           privateEndpointNetworkPolicies: 'Enabled'
           privateLinkServiceNetworkPolicies: 'Enabled'
@@ -62,6 +75,12 @@ resource virtualNetworkName_resource 'Microsoft.Network/virtualNetworks@2019-09-
       }
     ]
   }
+}]
+
+output deployedvNets array = [for i in range(0, copies): {
+  virtualNetworkName: virtualNetworkName_resource[i].name
+  addressPrefixes: virtualNetworkName_resource[i].properties.addressSpace
+  subnetName: virtualNetworkName_resource[i].properties.subnets
 }]
 
 resource anm_nsg 'Microsoft.Network/networkSecurityGroups@2020-11-01' = {
@@ -185,3 +204,29 @@ resource vmName_IISExtension 'Microsoft.Compute/virtualMachines/extensions@2021-
     vmName_resource
   ]
 }]
+
+resource virtualNetworkManager 'Microsoft.Network/networkManagers@2022-04-01-preview' = if (deployNetworkManager) {
+  name: avnmName 
+  location: location
+  properties: {
+    networkManagerScopeAccesses:[
+      'Connectivity'
+    ]
+    networkManagerScopes:{
+      subscriptions:[
+        currentSub
+      ]
+    }
+  }
+}
+
+//Create Bastion Host
+//module bastion 'modules/bastion.bicep'= if (deployBastion) {
+//  name: 'bastion'
+//  params: {
+ //   bastionHostName: bastionHostName
+ //   bastionSubnetIpPrefix: bastionSubnetIpPrefix
+//    vnetName: '${virtualNetworkName}${i}'
+//    location: location
+//  }
+// }
