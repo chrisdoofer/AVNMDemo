@@ -7,6 +7,7 @@ This demo environment seeks to provide a pre-configured environment to demonstra
 1. Connectivity 
 
     a) Configuring Full Mesh Network
+    
     b) Configuring Hub & Spoke
 
 2. Security
