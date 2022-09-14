@@ -9,7 +9,13 @@ This demo environment seeks to provide a pre-configured environment to demonstra
     a) Configuring Full Mesh Network
     
     b) Configuring Hub & Spoke
+    
+    c) Configuring Hub & Spoke with Direct Spoke Connectivity
 
 2. Security
 
     a) Configuring Security Admin Rules
+
+You can read more on the common use cases for leveraging Azure Virtual Network Manager here:
+
+https://docs.microsoft.com/en-us/azure/virtual-network-manager/concept-use-cases
