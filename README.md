@@ -2,7 +2,7 @@
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2Fchrisdoofer%2FAVNMDemo%2Fmain%2Fazuredeploy.json)
 
-This template deploys a specified number of VNETs (1 - 254), each with a small Windows VM with a custom script extension to deploy IIS. 
+This template deploys a specified number of VNETs (1 - 254), each with a small Windows VM and a custom script extension to deploy IIS. 
 
 The address space in each VNET is unique: 10.0.<1-254>.0.
 
