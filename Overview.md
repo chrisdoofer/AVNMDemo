@@ -4,7 +4,7 @@ Azure Virtual Network Manager is a highly scalable and highly available network 
 
 Below, if you select the scope for your AVNM to be only management group A, then the VNets under subscriptions D, E, and F (which are ultimately encapsulated within management group A) are all visible to that network manager.
 
-![Hierarchy](/images/AVNM HierarchyandScoping.png)
+![Hierarchy](/images/AVNMHierarchyandScoping.png)
 	
 	
 	 
