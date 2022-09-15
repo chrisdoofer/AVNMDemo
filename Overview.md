@@ -42,7 +42,7 @@ At a high level, AVNM can create connectivity configurations and/or security adm
 
 Connectivity configuration: this will create connections between Azure VNets in either hub and spoke or full mesh topologies. In the hub and spoke topology, you can also enable an option to allow spoke VNets to connect directly to each other without going through the hub VNet. In the example shown below, you can allow the “Prod” spoke VNets to connect to each other, while the “Test” VNets do not.
 
-![Hierarchy](images/AVNM Connectivity.png)
+![Connectivity](images/AVNM Connectivity.png)
 	
 	
 	 
@@ -69,7 +69,7 @@ Connectivity configuration: this will create connections between Azure VNets in 
 	
 Security admin configuration:  this will create security admin rules for controlling either inbound or outbound traffic. Security admin rules are evaluated prior to NSG rules as shown below, so you can use this security admin configuration to create and enforce organizational level rules.
  
-![Hierarchy](images/AVNM Security.png)
+![Security](images/AVNM Security.png)
  
 	
 	
