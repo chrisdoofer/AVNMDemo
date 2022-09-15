@@ -16,7 +16,7 @@ Below, if you select the scope for your AVNM to be only management group A, then
 			
 				
 						
-				Simple and Central Azure Virtual Network Management Using the New Azure Virtual Network Manager
+
 							
 						
 					
@@ -54,7 +54,7 @@ Connectivity configuration: this will create connections between Azure VNets in 
 			
 				
 						
-				Simple and Central Azure Virtual Network Management Using the New Azure Virtual Network Manager
+
 							
 						
 					
@@ -82,7 +82,7 @@ Security admin configuration:  this will create security admin rules for control
 			
 				
 						
-				Simple and Central Azure Virtual Network Management Using the New Azure Virtual Network Manager
+
 							
 						
 					
