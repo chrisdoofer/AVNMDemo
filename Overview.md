@@ -4,7 +4,7 @@ Azure Virtual Network Manager is a highly scalable and highly available network 
 
 Below, if you select the scope for your AVNM to be only management group A, then the VNets under subscriptions D, E, and F (which are ultimately encapsulated within management group A) are all visible to that network manager.
 
-![Hierarchy](images/AVNM Hierarchy and Scoping.png)
+![Hierarchy](/images/AVNM Hierarchy and Scoping.png)
 	
 	
 	 
@@ -42,7 +42,7 @@ At a high level, AVNM can create connectivity configurations and/or security adm
 
 Connectivity configuration: this will create connections between Azure VNets in either hub and spoke or full mesh topologies. In the hub and spoke topology, you can also enable an option to allow spoke VNets to connect directly to each other without going through the hub VNet. In the example shown below, you can allow the “Prod” spoke VNets to connect to each other, while the “Test” VNets do not.
 
-![Connectivity](images/AVNM Connectivity.png)
+![Connectivity](/images/AVNM Hierarchy and Scoping.png)
 	
 	
 	 
@@ -69,7 +69,7 @@ Connectivity configuration: this will create connections between Azure VNets in 
 	
 Security admin configuration:  this will create security admin rules for controlling either inbound or outbound traffic. Security admin rules are evaluated prior to NSG rules as shown below, so you can use this security admin configuration to create and enforce organizational level rules.
  
-![Security](images/AVNM Security.png)
+![Security](/images/AVNM Security.png)
  
 	
 	
