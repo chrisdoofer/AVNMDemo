@@ -5,33 +5,6 @@ Azure Virtual Network Manager is a highly scalable and highly available network 
 Below, if you select the scope for your AVNM to be only management group A, then the VNets under subscriptions D, E, and F (which are ultimately encapsulated within management group A) are all visible to that network manager.
 
 ![Hierarchy](/images/AVNMHierarchyandScoping.png)
-	
-	
-	 
-	
-	
-	
-				
-		
-			
-				
-						
-
-							
-						
-					
-			
-		
-	
-			
-	
-	
-	
-	
-	
-
- 
-
 Additionally, you can create multiple AVNMs – as long as two AVNMs do not have the exact same scope and feature combination, they can coexist and the configurations of these AVNMs will be overlayed. The reason why AVNM has this design is because this ensures that VNets would know which AVNM’s configuration would prevail when there is a conflict.
 
 For example, referencing the diagram above, you can have one AVNM scoped to management group A for corporate-wide enforcement; and another AVNM scoped to management group C for business- or environment-specific security or connectivity purposes. These two AVNMs can be used by two different teams. When there is a conflict between the security admin configurations from different AVNMs, the configuration from the AVNM with a higher-level scope will prevail. 
@@ -43,59 +16,12 @@ At a high level, AVNM can create connectivity configurations and/or security adm
 Connectivity configuration: this will create connections between Azure VNets in either hub and spoke or full mesh topologies. In the hub and spoke topology, you can also enable an option to allow spoke VNets to connect directly to each other without going through the hub VNet. In the example shown below, you can allow the “Prod” spoke VNets to connect to each other, while the “Test” VNets do not.
 
 ![Connectivity](/images/AVNMConnectivity.png)
-	
-	
-	 
-	
-	
-	
-				
-		
-			
-				
-						
-
-							
-						
-					
-			
-		
-	
-			
-	
-	
-	
-	
-	
 Security admin configuration:  this will create security admin rules for controlling either inbound or outbound traffic. Security admin rules are evaluated prior to NSG rules as shown below, so you can use this security admin configuration to create and enforce organizational level rules.
  
 ![Security](/images/AVNMSecurity.png)
  
 	
-	
-	 
-	
-	
-	
-				
-		
-			
-				
-						
-
-							
-						
-					
-			
-		
-	
-			
-	
-	
-	
-	
-	
-
+# Demo Environment
 
 This demo environment seeks to provide a pre-configured environment to demonstrate the following key use cases:
 
