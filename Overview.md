@@ -4,7 +4,7 @@ Azure Virtual Network Manager is a highly scalable and highly available network 
 
 Below, if you select the scope for your AVNM to be only management group A, then the VNets under subscriptions D, E, and F (which are ultimately encapsulated within management group A) are all visible to that network manager.
 
-
+![Hierarchy](images/AVNM Hierarchy and Scoping.png)
 	
 	
 	 
@@ -36,11 +36,13 @@ Additionally, you can create multiple AVNMs – as long as two AVNMs do not have
 
 For example, referencing the diagram above, you can have one AVNM scoped to management group A for corporate-wide enforcement; and another AVNM scoped to management group C for business- or environment-specific security or connectivity purposes. These two AVNMs can be used by two different teams. When there is a conflict between the security admin configurations from different AVNMs, the configuration from the AVNM with a higher-level scope will prevail. 
 
-So, What Can AVNM Do?
+# So, What Can AVNM Do?
+
 At a high level, AVNM can create connectivity configurations and/or security admin configurations to control either network connectivity and/or network security.
 
 Connectivity configuration: this will create connections between Azure VNets in either hub and spoke or full mesh topologies. In the hub and spoke topology, you can also enable an option to allow spoke VNets to connect directly to each other without going through the hub VNet. In the example shown below, you can allow the “Prod” spoke VNets to connect to each other, while the “Test” VNets do not.
-thumbnail image 6 of blog post titled 
+
+![Hierarchy](images/AVNM Connectivity.png)
 	
 	
 	 
@@ -67,7 +69,7 @@ thumbnail image 6 of blog post titled
 	
 Security admin configuration:  this will create security admin rules for controlling either inbound or outbound traffic. Security admin rules are evaluated prior to NSG rules as shown below, so you can use this security admin configuration to create and enforce organizational level rules.
  
-
+![Hierarchy](images/AVNM Security.png)
  
 	
 	
