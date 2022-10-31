@@ -11,6 +11,6 @@ The goal behind this is to provide a base infrastructure to demonstrate the key 
 Usage:
 - Create a resource group in your region of choice.
 - Deploy the template to the resource group.
-- Deploy ANM to the resource group.
+- Deploy AVNM to the resource group.
 - Configure and test AVNM per instructions provided in this repo.
 
